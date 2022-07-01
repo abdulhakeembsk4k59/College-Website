@@ -37,6 +37,34 @@ app.get("/contact", function(req, res){
   res.render("contact")
 });
 
+app.get("/std-register", function(req, res){
+  res.render("std-register");
+});
+app.get("/std-login", function(req, res){
+  res.render("std-login");
+});
+app.get("/std-materials", function(req, res){
+  res.render("std-materials");
+});
+app.get("/std-notifications", function(req, res){
+  res.render("std-notifications");
+});
+
+
+// Faculty
+app.get("/fac-register",function(req, res){
+  res.render("fac-register");
+});
+app.get("/fac-login", function(req, res){
+  res.render("fac-login");
+});
+app.get("/fac-timings", function(req, res){
+  res.render("fac-timings");
+});
+app.get("/fac-notifications", function(req, res){
+  res.render("fac-notifications");
+});
+
 
 app.listen(3006, function(){
   console.log("Server has started on port 3006..!");

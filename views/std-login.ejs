@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Animated Login Form</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/stdLoginStyle.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+
+  <style media="screen">
+    .ftco-section {
+        padding: 0em 0;
+    }
+  </style>
+</head>
+<body>
+
+  <section class="ftco-section">
+
+
+
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+      <div class="container-fluid">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="fa fa-bars"></span> Menu
+        </button>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav m-auto">
+            <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Acadamics</a>
+              <div class="dropdown-menu" aria-labelledby="dropdown04">
+                <a class="dropdown-item" href="/acadamic-2022">2022</a>
+                <a class="dropdown-item" href="/acadamic-2021">2021</a>
+                <a class="dropdown-item" href="/acadamic-2020">2020</a>
+                <a class="dropdown-item" href="/acadamic-2019">2019</a>
+              </div>
+            </li>
+            <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Student Corner</a>
+              <div class="dropdown-menu" aria-labelledby="dropdown04">
+                <a class="dropdown-item" href="/std-register">Register</a>
+                <a class="dropdown-item" href="/std-login">Login</a>
+                <a class="dropdown-item" href="/std-materials">Materials</a>
+                <a class="dropdown-item" href="/std-notifications">Notifications</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Faculty Corner</a>
+              <div class="dropdown-menu" aria-labelledby="dropdown04">
+                <a class="dropdown-item" href="/fac-register">Register</a>
+                <a class="dropdown-item" href="/fac-login">Login</a>
+                <a class="dropdown-item" href="/fac-timings">Timings</a>
+                <a class="dropdown-item" href="/fac-notifications">Notifications</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- END nav -->
+
+  </section>
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
+
+
+	 <img class="wave" src="img/wave.jpg">
+	 <div class="container">
+		 <div class="img">
+			 <img src="img/login.svg">
+		 </div>
+		 <div class="login-content">
+			 <form action="index.html">
+				 <img src="img/user.svg">
+				 <h2 class="title">Welcome</h2>
+				 <div class="input-div one">
+					 <div class="i">
+						 <i class="fas fa-user"></i>
+					 </div>
+					 <div class="div">
+						 <h5>Username</h5>
+						 <input type="text" class="form-control">
+					 </div>
+				 </div>
+				 <div class="input-div pass">
+					<div class="i">
+						<i class="fas fa-lock"></i>
+					</div>
+					<div class="div">
+						<h5>Password</h5>
+						<input type="password" class="form-control">
+					</div>
+				</div>
+				<a href="#">Forget Password?</a>
+				<input type="submit" class="btn" value="Login">
+			 </form>
+		 </div>
+	 </div>
+    <script type="text/javascript" src="js/loginMain.js"></script>
+</body>
+</html>
