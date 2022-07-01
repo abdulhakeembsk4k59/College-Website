@@ -17,8 +17,24 @@ app.use(bodyParser.urlencoded({
 app.get("/", function(req, res){
   res.render("home");
 });
-app.get("/dashboard", function(req, res){
-  res.render("dashboard")
+app.get("/acadamic-2022", function(req, res){
+  res.render("acadamic-2022");
+});
+app.get("/acadamic-2021", function(req, res){
+  res.render("acadamic-2021");
+});
+app.get("/acadamic-2020", function(req, res){
+  res.render("acadamic-2020");
+});
+app.get("/acadamic-2019", function(req,res){
+  res.render("acadamic-2019");
+});
+app.get("/about", function(req, res){
+  res.render("about")
+});
+
+app.get("/contact", function(req, res){
+  res.render("contact")
 });
 
 
