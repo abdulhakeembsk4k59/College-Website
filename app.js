@@ -14,13 +14,19 @@ app.use(bodyParser.urlencoded({
 }));
 
 
-mongoose.connect("mongodb://localhost:27017/CollegeDB", {useNewUrlParser: true});
+mongoose.connect("mongodb+srv://admin-hakeem:root@cluster0.1zo3y.mongodb.net/CollegeDB?retryWrites=true&w=majority", { useNewUrlParser: true });
 const userSchema = new mongoose.Schema({
+  fullName: String,
+  id: String,
   email: String,
   password: String
 });
-
 const User  = new mongoose.model("User", userSchema);
+
+const idSchema = new mongoose.Schema({
+  idEntry: String
+});
+const Id = new mongoose.model("Id", idSchema);
 
 
 //pages
@@ -75,23 +81,36 @@ app.get("/fac-notifications", function(req, res){
   res.render("fac-notifications");
 });
 
+app.get("/idEntry", function(req, res){
+  res.render("idEntry");
+});
+
 
 
 // loding dashboard page after registering
 app.post("/std-register", function(req, res){
   bcrypt.hash(req.body.password, saltRounds, function(err, hash){
     const newUser = new User({
+      fullName: req.body.fullName,
+      id: req.body.id,
       email: req.body.username,
       password: hash
     });
-
-    newUser.save(function(err){
-      if(err){
-        console.log(err);
+    let id = req.body.id;
+    Id.findOne({idEntry: id}, function(foundId){
+      if(foundId.idEntry == id){
+        newUser.save(function(err){
+          if(err){
+            console.log(err);
+          }else{
+            res.render("dashboard");
+          }
+        });
       }else{
-        res.render("dashboard");
+        res.render("notAstd");
       }
     });
+
   });
 });
 
@@ -111,6 +130,19 @@ app.post("/std-login", function(req, res){
           }
         });
       }
+    }
+  });
+});
+
+app.post("/idEntry", function(req, res){
+  const newId = new Id({
+    idEntry: req.body.id
+  });
+  newId.save(function(err){
+    if(err){
+      console.log(err);
+    }else{
+      res.render("idEntry");
     }
   });
 });
