@@ -4,6 +4,10 @@ const ejs = require("ejs");
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
+const isset = require("isset");
+const empty = require("is-empty");
+const Error = require("messages");
+
 
 const app = express();
 
@@ -89,6 +93,20 @@ app.get("/idEntry", function(req, res){
 
 // loding dashboard page after registering
 app.post("/std-register", function(req, res){
+  const id = req.body.id;
+  Id.findOne({idEntry:id}, function(id_err, id_result){
+    if(isset(id_err)&& !empty(id_err)){
+      reject(Error.database_error());
+    }else{
+      if(isset(id_result)&& !empty(id_result)){
+        console.log("Id Alrady Exists...");
+        res.render("std-register");
+      }else{
+        console.log("All good at time");
+      }
+    }
+  });
+
   bcrypt.hash(req.body.password, saltRounds, function(err, hash){
     const newUser = new User({
       fullName: req.body.fullName,
@@ -96,18 +114,13 @@ app.post("/std-register", function(req, res){
       email: req.body.username,
       password: hash
     });
-    let id = req.body.id;
-    Id.findOne({idEntry: id}, function(foundId){
-      if(foundId.idEntry == id){
-        newUser.save(function(err){
-          if(err){
-            console.log(err);
-          }else{
-            res.render("dashboard");
-          }
-        });
+    
+    newUser.save(function(err){
+      if(err){
+        console.log(err);
       }else{
-        res.render("notAstd");
+
+        res.render("dashboard");
       }
     });
 
@@ -118,7 +131,7 @@ app.post("/std-register", function(req, res){
 app.post("/std-login", function(req, res){
   const username = req.body.username;
   const password = req.body.password;
-
+  
   User.findOne({email: username}, function(err, foundUser){
     if(err){
       console.log(err);
